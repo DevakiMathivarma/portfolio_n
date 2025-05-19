@@ -4,19 +4,21 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simone Olivia - Designer</title>
+    <title>Portfolio</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 
 <body>
+    <div class="menu">
     <button class="menu-toggle" id="menu-toggle">☰</button>
+    </div>
     <div class="container">
 
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
             <div class="profile">
-                <img src="https://randomuser.me/api/portraits/women/44.jpg">
+                <img src="assets/images/devaki.jpeg">
                 <h2>Devaki Mathivarma</h2>
                 <h4>A Python Full Stack Developer</h4>
             </div>
@@ -33,7 +35,7 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="main-content">
+        <main class="main-content" id="main-content">
 
             <div class="about-title" id="about">
                 <h1 class="background-text">ABOUT ME</h1>
@@ -367,10 +369,35 @@
                 document.getElementById("pepperfry-image").src = pepperfryImages[pepperfryIndex];
             }
         }
-        document.getElementById("menu-toggle").addEventListener("click", function () {
-            const navLinks = document.getElementById("nav-links");
-            navLinks.classList.toggle("active");
-        });
+        // document.getElementById("menu-toggle").addEventListener("click", function () {
+        //     const navLinks = document.getElementById("nav-links");
+        //     navLinks.classList.toggle("active");
+        // });
+//           const menuToggle = document.getElementById('menu-toggle');
+//   const sidebar = document.getElementById('sidebar');
+
+//   menuToggle.addEventListener('click', () => {
+//     sidebar.classList.toggle('show');
+//   });
+
+
+  const menuToggle = document.getElementById('menu-toggle');
+  const sidebar = document.getElementById('sidebar');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  // Toggle sidebar
+  menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('show');
+  });
+
+  // Hide sidebar when a nav link is clicked (on mobile)
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 480) {
+        sidebar.classList.remove('show');
+      }
+    });
+  });
 
     </script>
 </body>
